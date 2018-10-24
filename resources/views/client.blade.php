@@ -20,6 +20,27 @@
         </p>
         {{csrf_field()}}
     </form>
+
+    <table border="1">
+        <tbody>
+            <tr>
+                <td>ID</td>
+                <td>Nombre</td>
+                <td>Redirect</td>
+                <td>Secret</td>
+            </tr>
+            
+            @foreach ($clients as $client)
+                <tr>
+                    <td>{{$client->id}}</td>
+                    <td>{{$client->name}}</td>
+                    <td>{{$client->redirect}}</td>
+                    <td>{{$client->secret}}</td>
+                </tr>
+            @endforeach
+            
+        </tbody>
+    </table>
     
 </body>
 </html>
