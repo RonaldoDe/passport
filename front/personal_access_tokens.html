@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Client Credentials</title>
+</head>
+<body>
+    <div id="wrapper">
+        <form method="POST">
+            <input type="submit" id="resources" value="Obtener Recursos">
+        </form>
+    </div>
+
+    <script>
+    
+        (function(){
+            'use strict';
+            let resources = document.getElementById('resources');
+            let token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjA2Yjc1YjkxODgyZThkZWI5ZmU1NjRmZTk4MGE4MGJjMzYwZjJlYTM5NjJiODk0NzQ4NGNmYTFhMWM2NzM3MGE5MGM2MDFhMDBjN2QwYzFjIn0.eyJhdWQiOiI1IiwianRpIjoiMDZiNzViOTE4ODJlOGRlYjlmZTU2NGZlOTgwYTgwYmMzNjBmMmVhMzk2MmI4OTQ3NDg0Y2ZhMWExYzY3MzcwYTkwYzYwMWEwMGM3ZDBjMWMiLCJpYXQiOjE1NDA0ODIxODcsIm5iZiI6MTU0MDQ4MjE4NywiZXhwIjoxNTcyMDE4MTg3LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.L47x0tHwhu24PWNKjNS8YqjJANqVQ28vAGYkD9JsSdSC-4JbY4ot0B3pSO1qRPjMkSP6a6zZ-wKeqR73zvU00PbR276_C49FCbM2c7ASgJa7389aY4hmj8Sxoxg8kXhdpn3qqNQ4e_iqqmv3jP4yWbgAhlhoszn1dLkAe80UvHWLqAxfdII0nU4PujmngzFxKwpUb2xGdakeAwQ695BzdUyUF2JFLoBS1o2ERH6B7eq8pMF5ytlH4A02KpirfIDLcEPmokxj0-l-gzKr7BpludI9Zy6-V_Ra-FVFj8dzuoxuJ_iOOT04e1tLrB15RiGQnvMR75pJzGAB5w6yYhVBmIzjx5rOdqhJl_xS2rMYdZGzcYvN3tK7r3hRFNEmv58YZXCc9RFx_0sTx1EKz-g-X9d6PNL3Wj5lM6I4HjqqVqUEHFfwhAT1q9bcMtvxDnvkS2pNkKBSD6wQoEM_e0Jixx6UZfS7ciWkkOm8SoeybvwjIuhwPE9pKta0XR2IFEXslp-Fch8ScFVjvnBqcgNCz6wzdeJat3Q25ze3TJaUJa2L1yq-29hhL44HiWHyTa_zmAoJebF6MSo49H2TGYJ3_hYjgyaDT0gLIAWQmxY3HoW0xjaNWfnF1ZYiTdvfWoQnyIjxT_qVSorYTi50cd6xVMyY-PQ790NCOK89rtMkza0';
+            
+            resources.addEventListener('click', function(e){
+                e.preventDefault();
+                fetch('http://localhost:8080/api/clients/posts', {
+                   method: 'GET',
+                   headers: {'Authorization': 'Bearer ' + token, 'Content-type': 'application/json'}
+               })
+               .then(response => {
+                   return response.json();
+               })
+               .then(data=>{
+                   console.log(data);
+               })
+            });
+
+        })();
+    
+    </script>
+    
+</body>
+</html>
