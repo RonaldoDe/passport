@@ -15,22 +15,24 @@
         (function(){
             'use strict';
 
-            if(localStorage.getItem('token')){
-                fetch('http://localhost:8080/api/posts', {
+                fetch('http://localhost:8080/api/two-posts', {
                     method: 'GET',
-                    headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}
+                    headers: {'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjBjNzMwNjcyNWVhN2IxZjg1NGRiMDJhNWE5ODU1MTkyOThjNjQ1OTYwYjY3MDgxOWExYmNkMjEzNjI2YzRjZDY1NzdlZTVhYzQ2NzI4MWY5In0.eyJhdWQiOiIyIiwianRpIjoiMGM3MzA2NzI1ZWE3YjFmODU0ZGIwMmE1YTk4NTUxOTI5OGM2NDU5NjBiNjcwODE5YTFiY2QyMTM2MjZjNGNkNjU3N2VlNWFjNDY3MjgxZjkiLCJpYXQiOjE1NDA1MDQ3NDUsIm5iZiI6MTU0MDUwNDc0NSwiZXhwIjoxNTcyMDQwNzQ1LCJzdWIiOiIxIiwic2NvcGVzIjpbImdldC10d28tcG9zdHMiXX0.zCHo4O_ahUmzYRv9Zu9v3UQbHxPm5oZ6nQhnd0sPDa_WtXfWcdygQ0EPQsL5IzwKGrBaS0q2Ul8ROmP95eS1lyX-syk2V-Ovk811T-B3hiN0DnGGLgcj96f06-081kbRqB3xkBV8kJ8EQ9rGkQgCoLRqeuFee4NVg8g8UeVFErguTWDTWwSyeIuNyRXcfOMoIqV6YKh4Zq5x__DWOpgwHfdw4IAmOo69o6FVFaz0Ukxnue2IUdHbvPEITlgl9SOge2ByBf4HvnCs8zUsLIXXN9E-WUE2b3FlFEOd61f_7lql30f0Rw0INxMVacjSIxJrWAXQAjzBn_i_1gWcdfzoxghF0-B2U2-fDoXuNfMZ894LNgnHk0p54NI6FgYmlUmKBIMbGYp84vdoBMCvsKUr2cFZCh5r3VAC080WCclvPcwzawjzxAjXCgEHzehcVbyKh5G9i4Jwdo1WXOGJbLsijlsJN3vXpnbywA-nxpBfstPW827XYk9o9ri1pEvU0iWWO7niHu6RbHiX_pANqWF8WaVMC7WCzXDjCLk4UQxVxTRQEsxHYcT8tzg86Q7uMUWzHDZ7LKLUvb2YPbTR2t_GbkytW0jEDfYOcys6QSYxPFMnMyNDfXvpUfSRlChJZL5TTQ34glDpfmsH2LyFHSSSF08Ll3oLYvZWesCXUQyeF-Y',
+                    'Content-Type': 'application/json'
+                    }
                 })
                 .then(response =>{
                     return response.json()
                 })
                 .then(data => {
+                    console.log(data);
                     let li = '';
                     data.forEach((post, index) => {
                         li += '<li> <B>' + post.title + '</B>' +' - ' + '<i>' + post.body + '</i>' +'</li>';
                     })
                     document.querySelector('ul').innerHTML = li;
                 })
-            }
+            
 
         })();
     </script>
